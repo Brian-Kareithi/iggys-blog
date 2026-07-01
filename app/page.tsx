@@ -71,7 +71,7 @@ export default function Home() {
         <section className="mb-28">
           <div className="relative w-full aspect-[16/9] max-h-[550px] overflow-hidden">
             <Image
-              src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/0V6A9122.png"
+              src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
               alt="Hero"
               fill
               className="object-cover"
