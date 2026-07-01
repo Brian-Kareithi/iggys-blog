@@ -128,10 +128,10 @@ export default function AdminDashboard() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-3 px-3 py-2.5 text-white/40 cursor-pointer hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 text-xs tracking-wider border border-transparent hover:border-white/10">
+        <a href="/" className="flex items-center gap-3 px-3 py-2.5 text-white/40 cursor-pointer hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 text-xs tracking-wider border border-transparent hover:border-white/10">
           <span className="text-base">&#x1F6AA;</span>
           <span>LOGOUT</span>
-        </div>
+        </a>
       </aside>
 
       {/* ── MAIN ── */}
