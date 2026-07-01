@@ -20,10 +20,10 @@ const recentNotifications = [
 ];
 
 const typeIcons: Record<string, string> = {
-  comment: "\uD83D\uDCAC",
-  subscriber: "\uD83D\uDCE7",
-  message: "\uD83D\uDCE8",
-  login: "\uD83D\uDD12",
+  comment: "C",
+  subscriber: "S",
+  message: "M",
+  login: "L",
 };
 
 export default function NotificationsPage() {

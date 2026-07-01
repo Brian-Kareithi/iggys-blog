@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const categories = [
-  { name: "Technology", icon: "\uD83D\uDCBB", count: 24, desc: "Latest in tech, gadgets, and digital innovation." },
-  { name: "Lifestyle", icon: "\uD83C\uDF3F", count: 18, desc: "Wellness, habits, and everyday living." },
-  { name: "Programming", icon: "\uD83D\uDCD1", count: 31, desc: "Code, frameworks, and software development." },
-  { name: "AI", icon: "\uD83E\uDD16", count: 15, desc: "Artificial intelligence and machine learning." },
-  { name: "Photography", icon: "\uD83D\uDCF7", count: 12, desc: "Visual stories, tips, and gear reviews." },
-  { name: "Travel", icon: "\u2708\uFE0F", count: 22, desc: "Destinations, cultures, and travel guides." },
-  { name: "Business", icon: "\uD83D\uDCCA", count: 9, desc: "Startups, strategy, and entrepreneurship." },
-  { name: "Personal", icon: "\uD83D\uDC64", count: 17, desc: "Reflections, stories, and personal growth." },
+  { name: "Technology", count: 24, desc: "Latest in tech, gadgets, and digital innovation." },
+  { name: "Lifestyle", count: 18, desc: "Wellness, habits, and everyday living." },
+  { name: "Programming", count: 31, desc: "Code, frameworks, and software development." },
+  { name: "AI", count: 15, desc: "Artificial intelligence and machine learning." },
+  { name: "Photography", count: 12, desc: "Visual stories, tips, and gear reviews." },
+  { name: "Travel", count: 22, desc: "Destinations, cultures, and travel guides." },
+  { name: "Business", count: 9, desc: "Startups, strategy, and entrepreneurship." },
+  { name: "Personal", count: 17, desc: "Reflections, stories, and personal growth." },
 ];
 
 export default function CategoriesPage() {
@@ -18,8 +19,11 @@ export default function CategoriesPage() {
     <div className="min-h-screen bg-background text-foreground">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-3">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-            KK.
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+              <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground">IGGY&rsquo;s Blog</span>
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-foreground/80">
             {["Home", "Blog", "Categories", "About", "Contact"].map((l) => (
@@ -45,7 +49,6 @@ export default function CategoriesPage() {
               href={`/categories/${cat.name.toLowerCase()}`}
               className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:bg-gray-50 hover:border-gray-300 hover:-translate-y-1.5 transition-all duration-300 shadow-lg group"
             >
-              <span className="text-4xl inline-block mb-3">{cat.icon}</span>
               <h3 className="text-lg font-bold text-foreground">{cat.name}</h3>
               <p className="text-xs text-foreground/50 mt-1">{cat.count} posts</p>
               <p className="text-sm text-foreground/70 mt-2 line-clamp-2">{cat.desc}</p>

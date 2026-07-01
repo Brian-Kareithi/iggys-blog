@@ -1,14 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-3">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-            KK.
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+              <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground">IGGY&rsquo;s Blog</span>
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-foreground/80">
             {["Home", "Blog", "Categories", "About", "Contact"].map((l) => (

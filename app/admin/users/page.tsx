@@ -155,8 +155,8 @@ export default function UsersPage() {
               </div>
               <div className="hidden md:block w-[14%] text-foreground/40 text-xs">{user.joined}</div>
               <div className="w-[63%] sm:w-[34%] text-right flex items-center justify-end gap-1 sm:gap-2">
-                <button onClick={() => openEdit(user)} className="px-2 sm:px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light hover:border-gray-200 transition-all duration-300 text-[11px]">&#x270F;&#xFE0F;</button>
-                <button onClick={() => handleDelete(user.id)} className="px-2 sm:px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-red-500 hover:bg-red-50 hover:border-red-200 transition-all duration-300 text-[11px]">&#x1F5D1;</button>
+                <button onClick={() => openEdit(user)} className="px-2 sm:px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light hover:border-gray-200 transition-all duration-300 text-[11px]">Edit</button>
+                <button onClick={() => handleDelete(user.id)} className="px-2 sm:px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-red-500 hover:bg-red-50 hover:border-red-200 transition-all duration-300 text-[11px]">Delete</button>
               </div>
             </div>
           ))}
@@ -166,7 +166,9 @@ export default function UsersPage() {
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
           <div className="relative w-full max-w-[500px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setModalOpen(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
+            <button onClick={() => setModalOpen(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
             <h2 className="text-xl font-bold text-foreground tracking-tight mb-7">{editing ? "Edit User" : "Add User"}</h2>
             <label className="block text-[11px] font-bold tracking-wider text-foreground/60 mb-1.5">NAME</label>
             <input type="text" placeholder="Full name" value={formName} onChange={(e) => setFormName(e.target.value)} className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 mb-5" />

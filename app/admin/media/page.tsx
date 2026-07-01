@@ -86,16 +86,16 @@ export default function MediaPage() {
             <div key={item.id} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:bg-gray-50 hover:border-gray-300 hover:-translate-y-1 transition-all duration-300">
               <div className="relative h-32 sm:h-40 flex items-center justify-center" style={{ background: `${item.color}25` }}>
                 {item.type === "image" ? (
-                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-2xl shadow-sm">
-                    &#x1F5BC;&#xFE0F;
+                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-sm font-bold text-foreground/60 shadow-sm">
+                    IMG
                   </div>
                 ) : (
-                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-2xl shadow-sm">
-                    &#x1F4C4;
+                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-sm font-bold text-foreground/60 shadow-sm">
+                    PDF
                   </div>
                 )}
-                <button onClick={() => handleDelete(item.id)} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white/70 hover:text-red-300 hover:bg-red-500/30 transition-all duration-300 opacity-0 group-hover:opacity-100 text-xs">
-                  &#x1F5D1;
+                <button onClick={() => handleDelete(item.id)} className="absolute top-2 right-2 px-2 py-1 flex items-center justify-center rounded-lg bg-foreground/60 text-white/70 hover:text-red-300 hover:bg-red-500/30 transition-all duration-300 opacity-0 group-hover:opacity-100 text-[10px]">
+                  Delete
                 </button>
               </div>
               <div className="p-3 sm:p-4">

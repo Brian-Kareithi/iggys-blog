@@ -13,14 +13,14 @@ const navLinks = [
 ];
 
 const categories = [
-  { name: "Technology", icon: "\uD83D\uDCBB", count: 24 },
-  { name: "Lifestyle", icon: "\uD83C\uDF3F", count: 18 },
-  { name: "Programming", icon: "\uD83D\uDCD1", count: 31 },
-  { name: "AI", icon: "\uD83E\uDD16", count: 15 },
-  { name: "Photography", icon: "\uD83D\uDCF7", count: 12 },
-  { name: "Travel", icon: "\u2708\uFE0F", count: 22 },
-  { name: "Business", icon: "\uD83D\uDCCA", count: 9 },
-  { name: "Personal", icon: "\uD83D\uDC64", count: 17 },
+  { name: "Technology", count: 24 },
+  { name: "Lifestyle", count: 18 },
+  { name: "Programming", count: 31 },
+  { name: "AI", count: 15 },
+  { name: "Photography", count: 12 },
+  { name: "Travel", count: 22 },
+  { name: "Business", count: 9 },
+  { name: "Personal", count: 17 },
 ];
 
 const featuredPosts = [
@@ -148,8 +148,11 @@ export default function Home() {
     <div className={`relative min-h-screen ${darkMode ? "bg-[#1A1A1A]" : "bg-background"} text-foreground overflow-x-hidden`}>
       <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl transition-all duration-300 ${darkMode ? "bg-[#1A1A1A]/90 border-b border-white/10" : "bg-white/90 border-b border-gray-200"}`}>
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-4">
-          <Link href="/" className={`text-2xl font-bold tracking-tight ${darkMode ? "text-white" : "text-foreground"}`}>
-            KK.
+          <Link href="/" className="flex items-center gap-2">
+            <div className={`w-8 h-8 rounded-lg overflow-hidden shrink-0 ${darkMode ? "ring-1 ring-white/20" : ""}`}>
+              <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+            </div>
+            <span className={`text-lg font-bold tracking-tight ${darkMode ? "text-white" : "text-foreground"}`}>IGGY&rsquo;s Blog</span>
           </Link>
 
           <div className={`hidden md:flex items-center gap-7 text-sm font-medium ${darkMode ? "text-white/80" : "text-foreground/80"}`}>
@@ -261,7 +264,7 @@ export default function Home() {
                 </div>
               </div>
               <div className={`absolute -top-4 -left-4 w-16 h-16 rounded-full flex items-center justify-center shadow-lg ${darkMode ? "bg-[#1A1A1A] border border-white/10" : "bg-white border border-gray-200"}`}>
-                <span className="text-2xl">\u2708\uFE0F</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               </div>
             </div>
           </div>
@@ -278,8 +281,14 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredPosts.map((post) => (
               <div key={post.title} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                <div className="h-44 bg-gradient-to-br from-accent/20 to-accent-light/50 flex items-center justify-center">
-                  <span className="text-4xl opacity-40 group-hover:opacity-60 transition-opacity">\uD83D\uDCDD</span>
+                <div className="h-44 relative overflow-hidden">
+                  <Image
+                    src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
+                    alt=""
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-5">
                   <span className="inline-block px-3 py-1 text-[10px] font-bold tracking-wider bg-accent/10 text-accent rounded-full mb-3">{post.category}</span>
@@ -304,7 +313,6 @@ export default function Home() {
                 href={`/categories/${cat.name.toLowerCase()}`}
                 className="bg-white border border-gray-200 rounded-xl p-5 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 shadow-sm"
               >
-                <span className="text-2xl">{cat.icon}</span>
                 <h3 className="text-sm font-bold text-foreground mt-2">{cat.name}</h3>
                 <p className="text-xs text-accent mt-1">{cat.count} posts</p>
               </Link>
@@ -320,8 +328,14 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {latestPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300">
-                <div className="h-36 bg-gradient-to-br from-accent/10 to-accent-light/40 flex items-center justify-center">
-                  <span className="text-3xl opacity-30 group-hover:opacity-50 transition-opacity">\uD83D\uDCF0</span>
+                <div className="h-36 relative overflow-hidden">
+                  <Image
+                    src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
+                    alt=""
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-5">
                   <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider bg-accent/10 text-accent rounded-full mb-2.5">{post.category}</span>
@@ -357,7 +371,7 @@ export default function Home() {
         <section className="mb-20">
           <div className="bg-white border border-gray-200 rounded-3xl p-8 sm:p-12 flex flex-col sm:flex-row items-center gap-8 shadow-sm">
             <div className="w-28 h-28 rounded-full bg-gradient-to-br from-accent/20 to-accent-light/50 border-2 border-accent/20 flex items-center justify-center shrink-0">
-              <span className="text-4xl">\uD83D\uDC64</span>
+              <span className="text-xl font-bold text-foreground/80">KK</span>
             </div>
             <div>
               <h2 className="text-2xl font-bold text-foreground">Hi, I&rsquo;m KK.</h2>
@@ -471,7 +485,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
             <div>
-              <Link href="/" className="text-2xl font-bold text-foreground">KK.</Link>
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+                  <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+                </div>
+                <span className="text-lg font-bold tracking-tight text-foreground">IGGY&rsquo;s Blog</span>
+              </Link>
               <p className="text-xs text-foreground/50 mt-2 max-w-xs">Thoughts, stories, and ideas worth sharing. A personal blog about technology, creativity, and everyday life.</p>
             </div>
             <div>

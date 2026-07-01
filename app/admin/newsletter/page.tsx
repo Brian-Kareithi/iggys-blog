@@ -90,7 +90,7 @@ export default function NewsletterPage() {
             <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/50">
               <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">Subscribers</span>
               <button onClick={handleExport} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300 text-[11px]">
-                &#x1F4E4; EXPORT CSV
+                EXPORT CSV
               </button>
             </div>
             <div className="divide-y divide-gray-100">
@@ -126,7 +126,7 @@ export default function NewsletterPage() {
                 disabled={sending || !subject.trim() || !content.trim()}
                 className="px-6 py-2.5 bg-black text-white text-xs font-bold tracking-wider rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {sending ? "SENDING..." : sent ? "\u2713 SENT!" : "SEND NEWSLETTER"}
+                {sending ? "SENDING..." : sent ? "SENT!" : "SEND NEWSLETTER"}
               </button>
             </div>
           </div>

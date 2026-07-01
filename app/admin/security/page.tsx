@@ -82,7 +82,7 @@ export default function SecurityPage() {
               {sessions.map((session) => (
                 <div key={session.id} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-gray-50 transition-all duration-300">
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs shrink-0 ${session.current ? "bg-accent/20 text-accent" : "bg-accent-light/50 text-foreground/50"}`}>
-                    {session.current ? "\uD83D\uDC64" : "\uD83D\uDCBB"}
+                    {session.current ? "Cu" : "Ot"}
                   </div>
                   <div className="ml-3 flex-1 min-w-0">
                     <p className="text-sm text-foreground">
@@ -140,8 +140,10 @@ export default function SecurityPage() {
       {showPasswordReset && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
           <div className="relative w-full max-w-[450px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8 text-center">
-            <button onClick={() => setShowPasswordReset(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
-            <span className="text-4xl block mb-4">&#x1F512;</span>
+            <button onClick={() => setShowPasswordReset(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="block mb-4 mx-auto text-foreground/60"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <h2 className="text-xl font-bold text-foreground tracking-tight mb-2">Reset Password</h2>
             <p className="text-sm text-foreground/60 mb-6">A password reset link will be sent to your email address.</p>
             <div className="flex justify-center gap-3">

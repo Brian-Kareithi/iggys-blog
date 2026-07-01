@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const skills = [
   "React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Node.js", "Python", "GraphQL", "PostgreSQL", "Docker", "AWS", "Figma",
@@ -27,8 +28,11 @@ export default function AboutPage() {
     <div className="min-h-screen bg-background text-foreground">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-3">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-            KK.
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+              <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground">IGGY&rsquo;s Blog</span>
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-foreground/80">
             {["Home", "Blog", "Categories", "About", "Contact"].map((l) => (
@@ -44,7 +48,7 @@ export default function AboutPage() {
       <main className="max-w-4xl mx-auto px-5 sm:px-8 pt-28 pb-20">
         <div className="text-center mb-12">
           <div className="w-36 h-36 rounded-full bg-gradient-to-br from-accent/40 to-accent-light/20 border-2 border-gray-200 mx-auto mb-6 flex items-center justify-center shadow-lg">
-            <span className="text-5xl">\uD83D\uDC64</span>
+            <span className="text-2xl font-bold text-foreground/80">KK</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground">Hi, I&rsquo;m KK.</h1>
           <p className="text-sm text-foreground/60 mt-2 max-w-xl mx-auto">Writer, developer, and lifelong learner sharing thoughts on technology, creativity, and everyday life.</p>

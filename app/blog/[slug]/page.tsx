@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 const contentSections = [
@@ -34,8 +35,11 @@ export default function BlogPostPage() {
     <div className="min-h-screen bg-background text-foreground">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-4xl mx-auto flex items-center justify-between px-5 sm:px-8 py-3">
-          <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
-            KK.
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+              <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground">IGGY&rsquo;s Blog</span>
           </Link>
           <Link href="/blog" className="text-xs text-foreground/50 hover:text-foreground transition-colors">&larr; All Posts</Link>
         </div>
@@ -43,8 +47,15 @@ export default function BlogPostPage() {
 
       <main className="max-w-4xl mx-auto px-5 sm:px-8 pt-24 pb-20">
         <div className="rounded-3xl overflow-hidden mb-8 shadow-lg">
-          <div className="h-64 sm:h-80 bg-gradient-to-br from-accent/30 to-accent-light/20 flex items-center justify-center">
-            <span className="text-6xl opacity-30">\uD83D\uDCDD</span>
+          <div className="h-64 sm:h-80 relative overflow-hidden">
+            <Image
+              src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
           </div>
         </div>
 

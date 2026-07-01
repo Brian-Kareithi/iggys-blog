@@ -129,7 +129,7 @@ export default function MessagesPage() {
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-full text-center py-12">
-                <span className="text-4xl mb-4">&#x1F4E8;</span>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-4 text-foreground/30"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 <p className="text-foreground/50 text-sm">Select a message to read</p>
                 <p className="text-foreground/30 text-xs mt-1">Click on any message from the inbox</p>
               </div>
@@ -141,7 +141,9 @@ export default function MessagesPage() {
       {replyModal && selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
           <div className="relative w-full max-w-[500px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8">
-            <button onClick={() => setReplyModal(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
+            <button onClick={() => setReplyModal(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
             <h2 className="text-xl font-bold text-foreground tracking-tight mb-2">Reply to {selected.sender}</h2>
             <p className="text-xs text-foreground/40 mb-6">Re: {selected.subject}</p>
             <textarea

@@ -67,7 +67,9 @@ export default function SEOPage() {
                 <div className="relative w-full h-40">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={ogImage} alt="OG Preview" className="w-full h-full object-cover rounded-xl" />
-                  <button onClick={(e) => { e.stopPropagation(); setOgImage(null); }} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white hover:bg-foreground/80 transition-all duration-300">&#x2715;</button>
+                  <button onClick={(e) => { e.stopPropagation(); setOgImage(null); }} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white hover:bg-foreground/80 transition-all duration-300">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
                 </div>
               ) : (
                 <div className="text-foreground/50">
@@ -110,7 +112,7 @@ export default function SEOPage() {
 
         <div className="flex justify-end mt-6">
           <button onClick={handleSave} className="px-8 py-2.5 bg-black text-white text-xs font-bold tracking-wider rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-            {saved ? "\u2713 SAVED" : "SAVE SEO SETTINGS"}
+            {saved ? "SAVED" : "SAVE SEO SETTINGS"}
           </button>
         </div>
       </main>

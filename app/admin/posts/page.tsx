@@ -175,10 +175,10 @@ export default function PostsPage() {
                 <div className="hidden sm:block w-[15%] text-foreground/40 text-xs">{post.date}</div>
                 <div className="w-[47%] sm:w-[17%] text-right flex items-center justify-end gap-1 sm:gap-2">
                   <button onClick={() => openEdit(post)} className="inline-flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light hover:border-gray-200 transition-all duration-300 text-[11px]">
-                    &#x270F;&#xFE0F;
+                    Edit
                   </button>
                   <button onClick={() => handleDelete(post.id)} className="inline-flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-red-500 hover:bg-red-50 hover:border-red-200 transition-all duration-300 text-[11px]">
-                    &#x1F5D1;
+                    Delete
                   </button>
                 </div>
               </div>
@@ -190,7 +190,9 @@ export default function PostsPage() {
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
           <div className="relative w-full max-w-[600px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
-            <button onClick={() => setModalOpen(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
+            <button onClick={() => setModalOpen(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
             <h2 className="text-xl font-bold text-foreground tracking-tight mb-7">
               {editingPost ? "Edit Post" : "New Post"}
             </h2>
@@ -222,7 +224,9 @@ export default function PostsPage() {
                 <div className="relative w-full h-40 sm:h-48">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={imagePreview} alt="Preview" className="w-full h-full object-cover rounded-xl" />
-                  <button onClick={(e) => { e.stopPropagation(); setImagePreview(null); }} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white hover:bg-foreground/80 transition-all duration-300">&#x2715;</button>
+                  <button onClick={(e) => { e.stopPropagation(); setImagePreview(null); }} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white hover:bg-foreground/80 transition-all duration-300">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
                 </div>
               ) : (
                 <div className="text-foreground/50">

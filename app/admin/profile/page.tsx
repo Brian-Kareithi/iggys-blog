@@ -72,7 +72,7 @@ export default function ProfilePage() {
           <div className="flex items-center justify-between pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-gray-100">
             <p className="text-xs text-foreground/40">Last updated 2 days ago</p>
             <button onClick={handleSave} className="px-8 py-2.5 bg-black text-white text-xs font-bold tracking-wider rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-              {saved ? "\u2713 SAVED" : "SAVE CHANGES"}
+              {saved ? "SAVED" : "SAVE CHANGES"}
             </button>
           </div>
         </div>

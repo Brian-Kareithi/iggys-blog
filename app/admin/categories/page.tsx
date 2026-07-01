@@ -90,7 +90,7 @@ export default function CategoriesPage() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg" style={{ background: `${cat.color}20`, color: cat.color }}>
-                    {cat.name === "Travel" ? "\u2708\uFE0F" : cat.name === "Style" ? "\uD83D\uDC54" : "\uD83D\uDDA5\uFE0F"}
+                    {cat.name === "Travel" ? "Tr" : cat.name === "Style" ? "St" : "Te"}
                   </div>
                   <div>
                     <h3 className="text-foreground font-bold text-sm">{cat.name}</h3>
@@ -98,8 +98,8 @@ export default function CategoriesPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg text-foreground/40 hover:text-foreground hover:bg-accent-light transition-all duration-300 text-xs">&#x270F;&#xFE0F;</button>
-                  <button onClick={() => handleDelete(cat.id)} className="p-1.5 rounded-lg text-foreground/40 hover:text-red-500 hover:bg-red-50 transition-all duration-300 text-xs">&#x1F5D1;</button>
+                  <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg text-foreground/40 hover:text-foreground hover:bg-accent-light transition-all duration-300 text-xs">Edit</button>
+                  <button onClick={() => handleDelete(cat.id)} className="p-1.5 rounded-lg text-foreground/40 hover:text-red-500 hover:bg-red-50 transition-all duration-300 text-xs">Delete</button>
                 </div>
               </div>
               <p className="text-[13px] text-foreground/60 leading-relaxed mb-4">{cat.description}</p>
@@ -118,7 +118,9 @@ export default function CategoriesPage() {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
           <div className="relative w-full max-w-[500px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8">
-            <button onClick={() => setShowModal(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
+            <button onClick={() => setShowModal(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
             <h2 className="text-xl font-bold text-foreground tracking-tight mb-7">{editing ? "Edit Category" : "New Category"}</h2>
             <label className="block text-[11px] font-bold tracking-wider text-foreground/60 mb-1.5">NAME</label>
             <input type="text" placeholder="e.g. Lifestyle" value={formName} onChange={(e) => setFormName(e.target.value)} className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 mb-5" />

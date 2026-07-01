@@ -77,7 +77,7 @@ export default function TagsPage() {
                 <p className="text-[11px] text-foreground/40">{tag.postCount} {tag.postCount === 1 ? "post" : "posts"}</p>
               </div>
               <button onClick={() => handleDelete(tag.id)} className="ml-2 p-1.5 rounded-lg text-foreground/40 hover:text-red-500 hover:bg-red-50 transition-all duration-300 text-xs opacity-0 group-hover:opacity-100">
-                &#x1F5D1;
+                Delete
               </button>
             </div>
           ))}

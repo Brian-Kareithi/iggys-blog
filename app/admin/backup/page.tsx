@@ -124,15 +124,15 @@ export default function BackupPage() {
             {backups.map((backup) => (
               <div key={backup.id} className="flex items-center px-4 sm:px-6 py-3 sm:py-3.5 hover:bg-gray-50 transition-all duration-300">
                 <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs shrink-0 ${backup.type === "automatic" ? "bg-accent/20 text-accent" : "bg-blue-500/20 text-blue-400"}`}>
-                  {backup.type === "automatic" ? "\u23F0" : "\uD83D\uDC64"}
+                  {backup.type === "automatic" ? "Au" : "Ma"}
                 </div>
                 <div className="ml-3 flex-1 min-w-0">
                   <p className="text-sm text-foreground">{backup.date}</p>
                   <p className="text-[11px] text-foreground/40 capitalize">{backup.type} backup &bull; {backup.size}</p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0 ml-3">
-                  <button className="px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light hover:border-gray-200 transition-all duration-300 text-[11px]">&#x1F4E5; DOWNLOAD</button>
-                  <button className="px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-300 text-[11px]">&#x1F504; RESTORE</button>
+                  <button className="px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light hover:border-gray-200 transition-all duration-300 text-[11px]">DOWNLOAD</button>
+                  <button className="px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-300 text-[11px]">RESTORE</button>
                 </div>
               </div>
             ))}

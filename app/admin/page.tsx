@@ -154,10 +154,10 @@ export default function AdminDashboard() {
                   act.action.includes("published") ? "bg-green-100 text-green-600" :
                   "bg-accent-light/50 text-foreground/60"
                 }`}>
-                  {act.action.includes("comment") ? "\uD83D\uDCAC" :
-                   act.action.includes("Subscriber") ? "\u2709\uFE0F" :
-                   act.action.includes("published") ? "\uD83D\uDCE2" :
-                   act.action.includes("updated") ? "\u270F\uFE0F" : "\uD83D\uDD04"}
+                  {act.action.includes("comment") ? "C" :
+                   act.action.includes("Subscriber") ? "S" :
+                   act.action.includes("published") ? "P" :
+                   act.action.includes("updated") ? "U" : "R"}
                 </div>
                 <div className="ml-3 flex-1 min-w-0">
                   <p className="text-sm text-foreground">

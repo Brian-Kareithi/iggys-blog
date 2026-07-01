@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const allPosts = [
   { title: "Understanding Machine Learning Basics", category: "AI", slug: "ml-basics", date: "Jun 29, 2026", tags: ["AI", "Coding", "Programming"] },
@@ -36,8 +37,11 @@ export default function SearchPage() {
     <div className="min-h-screen bg-background text-foreground">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-3">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-            KK.
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
+              <Image src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg" alt="" width={32} height={32} className="object-cover h-full w-full" />
+            </div>
+            <span className="text-lg font-bold tracking-tight text-foreground">IGGY&rsquo;s Blog</span>
           </Link>
           <Link href="/" className="text-xs text-foreground/50 hover:text-foreground transition-colors">&larr; Back to Home</Link>
         </div>
@@ -101,8 +105,14 @@ export default function SearchPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:bg-gray-50 hover:border-gray-300 hover:-translate-y-1.5 transition-all duration-300">
-                <div className="h-36 bg-gradient-to-br from-accent/20 to-accent-light/10 flex items-center justify-center">
-                  <span className="text-3xl opacity-30 group-hover:opacity-50 transition-opacity">\uD83D\uDCDD</span>
+                <div className="h-36 relative overflow-hidden">
+                  <Image
+                    src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
+                    alt=""
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 <div className="p-5">
                   <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider bg-accent/20 text-accent rounded-full mb-2.5">{post.category}</span>

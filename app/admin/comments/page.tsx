@@ -132,17 +132,17 @@ export default function CommentsPage() {
               <div className="w-[36%] sm:w-[20%] text-right flex items-center justify-end gap-1 sm:gap-2">
                 {c.status !== "approved" && (
                   <button onClick={() => handleApprove(c.id)} className="px-2 sm:px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-300 text-[11px]" title="Approve">
-                    &#x2713;
+                    Approve
                   </button>
                 )}
-                <button onClick={() => handleSpamToggle(c.id)} className={`px-2 sm:px-3 py-1.5 rounded-lg border transition-all duration-300 text-[11px] ${c.status === "spam" ? "bg-yellow-500/20 border-yellow-500/30 text-yellow-400" : "bg-accent-light/50 border-gray-100 text-foreground/70 hover:bg-red-50 hover:border-red-200 hover:text-red-500"}`} title={c.status === "spam" ? "Not spam" : "Mark spam"}>
-                  &#x1F6AB;
+                  <button onClick={() => handleSpamToggle(c.id)} className={`px-2 sm:px-3 py-1.5 rounded-lg border transition-all duration-300 text-[11px] ${c.status === "spam" ? "bg-yellow-500/20 border-yellow-500/30 text-yellow-400" : "bg-accent-light/50 border-gray-100 text-foreground/70 hover:bg-red-50 hover:border-red-200 hover:text-red-500"}`} title={c.status === "spam" ? "Not spam" : "Mark spam"}>
+                  Spam
                 </button>
                 <button onClick={() => setReplyModal({ id: c.id, author: c.author })} className="px-2 sm:px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-blue-500 hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 text-[11px]" title="Reply">
-                  &#x21A9;&#xFE0F;
+                  Reply
                 </button>
                 <button onClick={() => handleDelete(c.id)} className="px-2 sm:px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-red-500 hover:bg-red-50 hover:border-red-200 transition-all duration-300 text-[11px]" title="Delete">
-                  &#x1F5D1;
+                  Delete
                 </button>
               </div>
             </div>
@@ -156,7 +156,9 @@ export default function CommentsPage() {
       {replyModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
           <div className="relative w-full max-w-[500px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8">
-            <button onClick={() => setReplyModal(null)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
+            <button onClick={() => setReplyModal(null)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
             <h2 className="text-xl font-bold text-foreground tracking-tight mb-2">Reply to {replyModal.author}</h2>
             <p className="text-xs text-foreground/40 mb-6">Your reply will be posted as a response to this comment.</p>
             <textarea
