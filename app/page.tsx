@@ -6,7 +6,7 @@ export default function Home() {
 
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/10 border-b border-white/20">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-8 py-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-8 py-2.5">
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold tracking-[0.15em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
               IGGY&rsquo;S BLOG
@@ -24,14 +24,14 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with blurred background */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Blurred background image */}
         <div className="absolute inset-0">
           <Image
             src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
             alt=""
             fill
-            className="object-cover scale-110 blur-sm"
+            className="object-cover scale-110 blur-[2px]"
             priority
           />
           <div className="absolute inset-0 bg-black/20" />
