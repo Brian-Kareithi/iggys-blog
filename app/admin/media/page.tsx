@@ -41,22 +41,22 @@ export default function MediaPage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 backdrop-blur-2xl bg-white/10 border-b border-white/20 shadow-lg">
+      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-white/60">Dashboard</span>
-          <span className="text-white/30">/</span>
-          <span className="text-accent font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Media</span>
+          <span className="text-foreground/60">Dashboard</span>
+          <span className="text-foreground/30">/</span>
+          <span className="text-accent font-medium">Media</span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="w-9 h-9 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg border border-white/20 hover:bg-accent transition-all duration-300">IB</div>
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg hover:bg-accent/90 transition-all duration-300">IB</div>
         </div>
       </header>
 
       <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">Media Library</h1>
-            <p className="text-[12px] text-white/40 mt-0.5">{media.length} items &bull; {Math.round(media.reduce((a, m) => a + parseFloat(m.size), 0) * 10) / 10} MB total</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">Media Library</h1>
+            <p className="text-[12px] text-foreground/40 mt-0.5">{media.length} items &bull; {Math.round(media.reduce((a, m) => a + parseFloat(m.size), 0) * 10) / 10} MB total</p>
           </div>
           <button onClick={handleUpload} className="group flex items-center gap-2 bg-black text-white text-xs font-bold tracking-wider px-6 py-2.5 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg w-full sm:w-auto justify-center">
             <span className="group-hover:scale-110 transition-transform duration-300">+</span>
@@ -72,8 +72,8 @@ export default function MediaPage() {
               onClick={() => setFolderFilter(f)}
               className={`px-4 py-2 text-[11px] font-bold tracking-wider rounded-xl transition-all duration-300 ${
                 folderFilter === f
-                  ? "bg-white/20 text-white border border-white/20 shadow-md"
-                  : "bg-white/5 text-white/50 border border-transparent hover:bg-white/10 hover:text-white"
+                  ? "bg-accent-light text-foreground border border-gray-200 shadow-sm"
+                  : "bg-white text-foreground/50 border border-gray-100 hover:bg-accent-light/50 hover:text-foreground"
               }`}
             >
               {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)} ({f === "all" ? media.length : f === "images" ? imagesCount : documentsCount})
@@ -83,34 +83,34 @@ export default function MediaPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
           {filtered.map((item) => (
-            <div key={item.id} className="group backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl overflow-hidden shadow-xl hover:bg-white/15 hover:border-white/30 hover:-translate-y-1 transition-all duration-300">
+            <div key={item.id} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:bg-gray-50 hover:border-gray-300 hover:-translate-y-1 transition-all duration-300">
               <div className="relative h-32 sm:h-40 flex items-center justify-center" style={{ background: `${item.color}25` }}>
                 {item.type === "image" ? (
-                  <div className="w-12 h-12 rounded-xl backdrop-blur-2xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-2xl shadow-sm">
                     &#x1F5BC;&#xFE0F;
                   </div>
                 ) : (
-                  <div className="w-12 h-12 rounded-xl backdrop-blur-2xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-2xl shadow-sm">
                     &#x1F4C4;
                   </div>
                 )}
-                <button onClick={() => handleDelete(item.id)} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-md text-white/70 hover:text-red-300 hover:bg-red-500/30 transition-all duration-300 opacity-0 group-hover:opacity-100 text-xs">
+                <button onClick={() => handleDelete(item.id)} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white/70 hover:text-red-300 hover:bg-red-500/30 transition-all duration-300 opacity-0 group-hover:opacity-100 text-xs">
                   &#x1F5D1;
                 </button>
               </div>
               <div className="p-3 sm:p-4">
-                <p className="text-xs font-medium text-white truncate drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{item.name}</p>
+                <p className="text-xs font-medium text-foreground truncate">{item.name}</p>
                 <div className="flex items-center justify-between mt-1.5">
-                  <span className="text-[10px] text-white/40">{item.size}</span>
-                  {item.type === "image" && <span className="text-[10px] text-white/40">{item.dimensions}</span>}
+                  <span className="text-[10px] text-foreground/40">{item.size}</span>
+                  {item.type === "image" && <span className="text-[10px] text-foreground/40">{item.dimensions}</span>}
                 </div>
-                <p className="text-[10px] text-white/30 mt-0.5">{item.date}</p>
+                <p className="text-[10px] text-foreground/30 mt-0.5">{item.date}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-[11px] text-white/30 text-center mt-6">
+        <p className="text-[11px] text-foreground/30 text-center mt-6">
           Images are automatically optimized &bull; WebP format &bull; Responsive breakpoints generated
         </p>
       </main>

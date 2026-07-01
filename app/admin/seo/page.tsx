@@ -18,62 +18,62 @@ export default function SEOPage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 backdrop-blur-2xl bg-white/10 border-b border-white/20 shadow-lg">
+      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-white/60">Dashboard</span>
-          <span className="text-white/30">/</span>
-          <span className="text-accent font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">SEO</span>
+          <span className="text-foreground/60">Dashboard</span>
+          <span className="text-foreground/30">/</span>
+          <span className="text-accent font-medium">SEO</span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="w-9 h-9 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg border border-white/20 hover:bg-accent transition-all duration-300">IB</div>
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg hover:bg-accent/90 transition-all duration-300">IB</div>
         </div>
       </header>
 
       <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] mb-7">SEO Settings</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight mb-7">SEO Settings</h1>
 
         <div className="space-y-5">
           {/* Meta Tags */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase mb-5">Meta Tags</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase mb-5">Meta Tags</h2>
             <div className="space-y-5">
               <div>
-                <label className="block text-[11px] font-bold tracking-wider text-white/60 mb-1.5">META TITLE</label>
-                <input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} className="w-full border-2 border-white/20 backdrop-blur-2xl bg-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-accent focus:bg-white/15 transition-all duration-300" />
-                <p className="text-[10px] text-white/30 mt-1.5">{metaTitle.length} characters &bull; Recommended: 50-60</p>
+                <label className="block text-[11px] font-bold tracking-wider text-foreground/60 mb-1.5">META TITLE</label>
+                <input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300" />
+                <p className="text-[10px] text-foreground/30 mt-1.5">{metaTitle.length} characters &bull; Recommended: 50-60</p>
               </div>
               <div>
-                <label className="block text-[11px] font-bold tracking-wider text-white/60 mb-1.5">META DESCRIPTION</label>
-                <textarea value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} rows={3} className="w-full border-2 border-white/20 backdrop-blur-2xl bg-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-accent focus:bg-white/15 transition-all duration-300 resize-none" />
-                <p className="text-[10px] text-white/30 mt-1.5">{metaDescription.length} characters &bull; Recommended: 150-160</p>
+                <label className="block text-[11px] font-bold tracking-wider text-foreground/60 mb-1.5">META DESCRIPTION</label>
+                <textarea value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} rows={3} className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 resize-none" />
+                <p className="text-[10px] text-foreground/30 mt-1.5">{metaDescription.length} characters &bull; Recommended: 150-160</p>
               </div>
             </div>
           </div>
 
           {/* Open Graph */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase mb-5">Open Graph</h2>
-            <label className="block text-[11px] font-bold tracking-wider text-white/60 mb-1.5">OG IMAGE</label>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase mb-5">Open Graph</h2>
+            <label className="block text-[11px] font-bold tracking-wider text-foreground/60 mb-1.5">OG IMAGE</label>
             <div
               onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
               onDragLeave={() => setDragOver(false)}
               onDrop={(e) => { e.preventDefault(); setDragOver(false); const file = e.dataTransfer.files?.[0]; if (file) setOgImage(URL.createObjectURL(file)); }}
               onClick={() => document.getElementById("og-upload")?.click()}
-              className={`border-2 border-dashed rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition-all duration-300 backdrop-blur-2xl ${
-                dragOver ? "border-accent bg-accent/15" : "border-white/20 hover:border-accent/60 bg-white/5 hover:bg-white/10"
+              className={`border-2 border-dashed rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition-all duration-300 ${
+                dragOver ? "border-accent bg-accent/15" : "border-gray-200 hover:border-accent/60 bg-accent-light/50 hover:bg-accent-light"
               }`}
             >
               {ogImage ? (
                 <div className="relative w-full h-40">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={ogImage} alt="OG Preview" className="w-full h-full object-cover rounded-xl" />
-                  <button onClick={(e) => { e.stopPropagation(); setOgImage(null); }} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md hover:bg-black/80 transition-all duration-300">&#x2715;</button>
+                  <button onClick={(e) => { e.stopPropagation(); setOgImage(null); }} className="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-foreground/60 text-white hover:bg-foreground/80 transition-all duration-300">&#x2715;</button>
                 </div>
               ) : (
-                <div className="text-white/50">
+                <div className="text-foreground/50">
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-3 text-accent/60"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
-                  <p className="text-sm text-white/60">Drag & drop or <span className="text-accent underline underline-offset-2">browse</span></p>
-                  <p className="text-[11px] text-white/30 mt-1">Recommended: 1200x630px, PNG or JPG</p>
+                  <p className="text-sm text-foreground/60">Drag & drop or <span className="text-accent underline underline-offset-2">browse</span></p>
+                  <p className="text-[11px] text-foreground/30 mt-1">Recommended: 1200x630px, PNG or JPG</p>
                 </div>
               )}
               <input id="og-upload" type="file" accept="image/*" onChange={(e) => { const file = e.target.files?.[0]; if (file) setOgImage(URL.createObjectURL(file)); }} className="hidden" />
@@ -81,13 +81,13 @@ export default function SEOPage() {
           </div>
 
           {/* Sitemap */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase">Sitemap</h2>
-                <p className="text-[12px] text-white/40 mt-1">Automatically generate sitemap.xml for search engines</p>
+                <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase">Sitemap</h2>
+                <p className="text-[12px] text-foreground/40 mt-1">Automatically generate sitemap.xml for search engines</p>
               </div>
-              <button onClick={() => setGenerateSitemap(!generateSitemap)} className={`relative w-11 h-6 rounded-full transition-all duration-300 shrink-0 ${generateSitemap ? "bg-accent shadow-md shadow-accent/30" : "bg-white/20"}`}>
+              <button onClick={() => setGenerateSitemap(!generateSitemap)} className={`relative w-11 h-6 rounded-full transition-all duration-300 shrink-0 ${generateSitemap ? "bg-accent shadow-md shadow-accent/30" : "bg-gray-200"}`}>
                 <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-lg transition-all duration-300 ${generateSitemap ? "translate-x-5" : "translate-x-0"}`} />
               </button>
             </div>
@@ -97,13 +97,13 @@ export default function SEOPage() {
           </div>
 
           {/* Robots.txt */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase mb-5">Robots.txt</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase mb-5">Robots.txt</h2>
             <textarea
               value={robotsTxt}
               onChange={(e) => setRobotsTxt(e.target.value)}
               rows={6}
-              className="w-full border-2 border-white/20 backdrop-blur-2xl bg-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-accent focus:bg-white/15 transition-all duration-300 resize-none font-mono"
+              className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 resize-none font-mono"
             />
           </div>
         </div>

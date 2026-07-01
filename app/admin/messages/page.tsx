@@ -52,51 +52,51 @@ export default function MessagesPage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 backdrop-blur-2xl bg-white/10 border-b border-white/20 shadow-lg">
+      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-white/60">Dashboard</span>
-          <span className="text-white/30">/</span>
-          <span className="text-accent font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Messages</span>
+          <span className="text-foreground/60">Dashboard</span>
+          <span className="text-foreground/30">/</span>
+          <span className="text-accent font-medium">Messages</span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="w-9 h-9 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg border border-white/20 hover:bg-accent transition-all duration-300">IB</div>
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg hover:bg-accent/90 transition-all duration-300">IB</div>
         </div>
       </header>
 
       <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] mb-7">Messages</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight mb-7">Messages</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {/* Inbox */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
-              <span className="text-xs font-bold tracking-widest text-white/60 uppercase">Inbox</span>
-              <span className="text-[10px] text-white/30">{messages.filter((m) => m.status !== "archived").length} messages</span>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden">
+            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/50">
+              <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">Inbox</span>
+              <span className="text-[10px] text-foreground/30">{messages.filter((m) => m.status !== "archived").length} messages</span>
             </div>
-            <div className="divide-y divide-white/5">
+            <div className="divide-y divide-gray-100">
               {messages.filter((m) => m.status !== "archived").length === 0 ? (
-                <div className="px-6 py-12 text-center text-white/40 text-sm">No messages.</div>
+                <div className="px-6 py-12 text-center text-foreground/40 text-sm">No messages.</div>
               ) : (
                 messages.filter((m) => m.status !== "archived").map((msg) => (
                   <div
                     key={msg.id}
                     onClick={() => handleSelect(msg)}
                     className={`flex items-start px-5 sm:px-6 py-3.5 cursor-pointer transition-all duration-300 ${
-                      selected?.id === msg.id ? "bg-white/15" : "hover:bg-white/10"
+                      selected?.id === msg.id ? "bg-gray-50" : "hover:bg-gray-50"
                     } ${msg.status === "unread" ? "border-l-2 border-accent" : ""}`}
                   >
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-                      msg.status === "unread" ? "bg-accent/30 text-accent border border-accent/40" : "bg-white/10 text-white/50 border border-white/10"
+                      msg.status === "unread" ? "bg-accent/30 text-accent border border-accent/40" : "bg-accent-light/50 text-foreground/50 border border-gray-100"
                     }`}>
                       {msg.sender.split(" ").map((n) => n[0]).join("")}
                     </div>
                     <div className="ml-3 flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <p className={`text-sm truncate ${msg.status === "unread" ? "text-white font-semibold" : "text-white/70"} drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]`}>{msg.sender}</p>
-                        <span className="text-[10px] text-white/40 shrink-0">{msg.date}</span>
+                        <p className={`text-sm truncate ${msg.status === "unread" ? "text-foreground font-semibold" : "text-foreground/70"}`}>{msg.sender}</p>
+                        <span className="text-[10px] text-foreground/40 shrink-0">{msg.date}</span>
                       </div>
-                      <p className="text-xs text-white/50 truncate mt-0.5">{msg.subject}</p>
-                      <p className="text-[11px] text-white/40 truncate mt-0.5">{msg.message.slice(0, 80)}...</p>
+                      <p className="text-xs text-foreground/50 truncate mt-0.5">{msg.subject}</p>
+                      <p className="text-[11px] text-foreground/40 truncate mt-0.5">{msg.message.slice(0, 80)}...</p>
                     </div>
                   </div>
                 ))
@@ -105,33 +105,33 @@ export default function MessagesPage() {
           </div>
 
           {/* Message Detail */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-5 sm:p-6 min-h-[300px]">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-5 sm:p-6 min-h-[300px]">
             {selected ? (
               <div>
                 <div className="flex items-start justify-between mb-5">
                   <div>
-                    <h2 className="text-base font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{selected.subject}</h2>
+                    <h2 className="text-base font-bold text-foreground">{selected.subject}</h2>
                     <div className="flex items-center gap-2 mt-1.5">
-                      <span className="text-sm text-white/70">{selected.sender}</span>
-                      <span className="text-[11px] text-white/40">&lt;{selected.email}&gt;</span>
+                      <span className="text-sm text-foreground/70">{selected.sender}</span>
+                      <span className="text-[11px] text-foreground/40">&lt;{selected.email}&gt;</span>
                     </div>
-                    <p className="text-[11px] text-white/40 mt-1">{selected.date}</p>
+                    <p className="text-[11px] text-foreground/40 mt-1">{selected.date}</p>
                   </div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-md rounded-xl p-4 mb-5 border border-white/10">
-                  <p className="text-sm text-white/80 leading-relaxed whitespace-pre-wrap">{selected.message}</p>
+                <div className="bg-accent-light/50 rounded-xl p-4 mb-5 border border-gray-100">
+                  <p className="text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">{selected.message}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <button onClick={() => setReplyModal(true)} className="px-4 py-2 bg-black text-white text-xs font-bold tracking-wider rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg">REPLY</button>
-                  <button onClick={() => handleArchive(selected.id)} className="px-4 py-2 border-2 border-white/20 backdrop-blur-2xl bg-white/5 text-white text-xs font-medium tracking-wider rounded-xl hover:bg-white/15 hover:border-white/40 transition-all duration-300">ARCHIVE</button>
+                  <button onClick={() => handleArchive(selected.id)} className="px-4 py-2 border border-gray-200 bg-white text-foreground text-xs font-medium tracking-wider rounded-xl hover:bg-accent-light hover:border-gray-300 transition-all duration-300">ARCHIVE</button>
                   <button onClick={() => handleDelete(selected.id)} className="px-4 py-2 border-2 border-red-500/30 text-red-400 text-xs font-medium tracking-wider rounded-xl hover:bg-red-500/10 hover:border-red-500/50 transition-all duration-300">DELETE</button>
                 </div>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-full text-center py-12">
                 <span className="text-4xl mb-4">&#x1F4E8;</span>
-                <p className="text-white/50 text-sm">Select a message to read</p>
-                <p className="text-white/30 text-xs mt-1">Click on any message from the inbox</p>
+                <p className="text-foreground/50 text-sm">Select a message to read</p>
+                <p className="text-foreground/30 text-xs mt-1">Click on any message from the inbox</p>
               </div>
             )}
           </div>
@@ -139,20 +139,20 @@ export default function MessagesPage() {
       </main>
 
       {replyModal && selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
-          <div className="relative w-full max-w-[500px] backdrop-blur-3xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-6 sm:p-8">
-            <button onClick={() => setReplyModal(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300">&#x2715;</button>
-            <h2 className="text-xl font-bold text-white tracking-tight mb-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">Reply to {selected.sender}</h2>
-            <p className="text-xs text-white/40 mb-6">Re: {selected.subject}</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4">
+          <div className="relative w-full max-w-[500px] bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8">
+            <button onClick={() => setReplyModal(false)} className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-accent-light/50 border border-gray-200 text-foreground/70 hover:text-foreground hover:bg-accent-light transition-all duration-300">&#x2715;</button>
+            <h2 className="text-xl font-bold text-foreground tracking-tight mb-2">Reply to {selected.sender}</h2>
+            <p className="text-xs text-foreground/40 mb-6">Re: {selected.subject}</p>
             <textarea
               placeholder="Write your reply..."
               value={replyText}
               onChange={(e) => setReplyText(e.target.value)}
               rows={6}
-              className="w-full border-2 border-white/20 backdrop-blur-2xl bg-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-accent focus:bg-white/15 transition-all duration-300 mb-6 resize-none"
+              className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all duration-300 mb-6 resize-none"
             />
             <div className="flex justify-end gap-3">
-              <button onClick={() => setReplyModal(false)} className="px-5 py-2.5 border-2 border-white/20 backdrop-blur-2xl bg-white/5 text-white text-xs font-medium tracking-wider rounded-xl hover:bg-white/15 hover:border-white/40 transition-all duration-300">CANCEL</button>
+              <button onClick={() => setReplyModal(false)} className="px-5 py-2.5 border border-gray-200 bg-white text-foreground text-xs font-medium tracking-wider rounded-xl hover:bg-accent-light hover:border-gray-300 transition-all duration-300">CANCEL</button>
               <button onClick={handleSendReply} className="px-5 py-2.5 bg-black text-white text-xs font-bold tracking-wider rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg">SEND REPLY</button>
             </div>
           </div>

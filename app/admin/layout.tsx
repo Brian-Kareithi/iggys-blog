@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 const sidebarItems = [
   { emoji: "\uD83D\uDCCA", label: "DASHBOARD", href: "/admin" },
@@ -33,25 +32,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="relative min-h-screen bg-background">
-      <div className="fixed inset-0">
-        <Image
-          src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
-          alt=""
-          fill
-          className="object-cover scale-110 blur-[2px]"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/20" />
-      </div>
-
-      <aside className="fixed left-0 top-0 z-40 w-[220px] h-screen backdrop-blur-2xl bg-white/10 border-r border-white/20 flex flex-col justify-between py-8 px-5">
+    <div className="flex min-h-screen bg-background">
+      <aside className="fixed left-0 top-0 z-40 w-[220px] h-screen bg-white border-r border-gray-200 flex flex-col justify-between py-8 px-5 shadow-lg">
         <div>
           <Link href="/admin" className="flex items-center gap-2 mb-10 px-1">
-            <span className="text-white text-lg font-bold tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            <span className="text-foreground text-lg font-bold tracking-wider">
               IGGY&rsquo;S BLOG
             </span>
-            <span className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(123,140,110,0.7)]" />
+            <span className="w-2 h-2 rounded-full bg-accent" />
           </Link>
           <nav className="flex flex-col gap-0.5">
             {sidebarItems.map((item) => (
@@ -60,8 +48,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 text-sm tracking-[0.15em] cursor-pointer transition-all duration-300 rounded-xl ${
                   isActive(item.href)
-                    ? "text-white bg-white/15 border border-white/20 shadow-md backdrop-blur-md"
-                    : "text-white/50 hover:text-white hover:bg-white/10 hover:border hover:border-white/10"
+                    ? "text-accent bg-accent-light font-bold"
+                    : "text-foreground/60 hover:text-foreground hover:bg-accent-light/50"
                 }`}
               >
                 <span className="text-base">{item.emoji}</span>
@@ -70,13 +58,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             ))}
           </nav>
         </div>
-        <Link href="/" className="flex items-center gap-3 px-3 py-2.5 text-white/40 cursor-pointer hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 text-xs tracking-wider border border-transparent hover:border-white/10">
+        <Link href="/" className="flex items-center gap-3 px-3 py-2.5 text-foreground/50 cursor-pointer hover:text-foreground hover:bg-accent-light/50 rounded-xl transition-all duration-300 text-xs tracking-wider border border-transparent hover:border-gray-200">
           <span className="text-base">&#x1F6AA;</span>
           <span>LOGOUT</span>
         </Link>
       </aside>
 
-      <div className="ml-[220px] relative z-30 flex flex-col min-h-screen">
+      <div className="ml-[220px] flex-1 flex flex-col min-h-screen bg-background">
         {children}
       </div>
     </div>

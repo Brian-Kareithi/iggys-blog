@@ -146,17 +146,6 @@ export default function Home() {
 
   return (
     <div className={`relative min-h-screen ${darkMode ? "bg-[#1A1A1A]" : "bg-background"} text-foreground overflow-x-hidden`}>
-      <div className="fixed inset-0">
-        <Image
-          src="https://ppkfgsakvcijmmhjwbcz.supabase.co/storage/v1/object/public/Photos/blog.jpg"
-          alt=""
-          fill
-          className="object-cover scale-110 blur-[2px]"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/20" />
-      </div>
-
       <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl transition-all duration-300 ${darkMode ? "bg-[#1A1A1A]/80 border-b border-white/5" : "bg-white/10 border-b border-white/20"}`}>
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-4">
           <Link href="/" className="text-2xl font-bold tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">

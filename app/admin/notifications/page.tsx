@@ -45,34 +45,34 @@ export default function NotificationsPage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 backdrop-blur-2xl bg-white/10 border-b border-white/20 shadow-lg">
+      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-white/60">Dashboard</span>
-          <span className="text-white/30">/</span>
-          <span className="text-accent font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Notifications</span>
+          <span className="text-foreground/60">Dashboard</span>
+          <span className="text-foreground/30">/</span>
+          <span className="text-accent font-medium">Notifications</span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="w-9 h-9 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg border border-white/20 hover:bg-accent transition-all duration-300">IB</div>
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg hover:bg-accent/90 transition-all duration-300">IB</div>
         </div>
       </header>
 
       <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] mb-7">Notifications</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight mb-7">Notifications</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {/* Settings */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase mb-5">Notification Preferences</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase mb-5">Notification Preferences</h2>
             <div className="space-y-4">
               {notificationTypes.map((nt) => (
                 <div key={nt.key} className="flex items-center justify-between py-2.5">
                   <div>
-                    <p className="text-sm font-medium text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{nt.label}</p>
-                    <p className="text-[12px] text-white/40">{nt.desc}</p>
+                    <p className="text-sm font-medium text-foreground">{nt.label}</p>
+                    <p className="text-[12px] text-foreground/40">{nt.desc}</p>
                   </div>
                   <button
                     onClick={() => toggleSetting(nt.key)}
-                    className={`relative w-11 h-6 rounded-full transition-all duration-300 shrink-0 ${(settings as Record<string, boolean>)[nt.key] ? "bg-accent shadow-md shadow-accent/30" : "bg-white/20"}`}
+                    className={`relative w-11 h-6 rounded-full transition-all duration-300 shrink-0 ${(settings as Record<string, boolean>)[nt.key] ? "bg-accent shadow-md shadow-accent/30" : "bg-gray-200"}`}
                   >
                     <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-lg transition-all duration-300 ${(settings as Record<string, boolean>)[nt.key] ? "translate-x-5" : "translate-x-0"}`} />
                   </button>
@@ -82,10 +82,10 @@ export default function NotificationsPage() {
           </div>
 
           {/* Recent Notifications */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden">
+            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/50">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-bold tracking-widest text-white/60 uppercase">Recent Notifications</span>
+                <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">Recent Notifications</span>
                 {notifications.filter((n) => !n.read).length > 0 && (
                   <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/30 text-accent text-[10px] font-bold">
                     {notifications.filter((n) => !n.read).length}
@@ -98,9 +98,9 @@ export default function NotificationsPage() {
                 </button>
               )}
             </div>
-            <div className="divide-y divide-white/5">
+            <div className="divide-y divide-gray-100">
               {notifications.map((n) => (
-                <div key={n.id} className={`flex items-start px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-white/10 transition-all duration-300 ${!n.read ? "bg-white/[0.04]" : ""}`}>
+                <div key={n.id} className={`flex items-start px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-gray-50 transition-all duration-300 ${!n.read ? "bg-gray-50/50" : ""}`}>
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0 ${
                     n.type === "comment" ? "bg-blue-500/20 text-blue-400" :
                     n.type === "subscriber" ? "bg-accent/20 text-accent" :
@@ -110,13 +110,13 @@ export default function NotificationsPage() {
                     {typeIcons[n.type]}
                   </div>
                   <div className="ml-3 flex-1 min-w-0">
-                    <p className={`text-sm ${n.read ? "text-white/60" : "text-white font-medium"} drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]`}>
+                    <p className={`text-sm ${n.read ? "text-foreground/60" : "text-foreground font-medium"}`}>
                       {n.message}
                     </p>
                   </div>
                   <div className="flex items-center gap-2 shrink-0 ml-3">
                     {!n.read && <span className="w-1.5 h-1.5 rounded-full bg-accent" />}
-                    <span className="text-[11px] text-white/40">{n.time}</span>
+                    <span className="text-[11px] text-foreground/40">{n.time}</span>
                   </div>
                 </div>
               ))}

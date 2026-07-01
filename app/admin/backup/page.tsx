@@ -37,47 +37,47 @@ export default function BackupPage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 backdrop-blur-2xl bg-white/10 border-b border-white/20 shadow-lg">
+      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-white/60">Dashboard</span>
-          <span className="text-white/30">/</span>
-          <span className="text-accent font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Backup</span>
+          <span className="text-foreground/60">Dashboard</span>
+          <span className="text-foreground/30">/</span>
+          <span className="text-accent font-medium">Backup</span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="w-9 h-9 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg border border-white/20 hover:bg-accent transition-all duration-300">IB</div>
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg hover:bg-accent/90 transition-all duration-300">IB</div>
         </div>
       </header>
 
       <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] mb-7">Backup</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight mb-7">Backup</h1>
 
         {/* Status & Controls */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
           {/* Status */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase mb-5">Backup Status</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase mb-5">Backup Status</h2>
             {lastBackup ? (
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-                  <span className="text-sm text-white font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Last Backup</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+                  <span className="text-sm text-foreground font-medium">Last Backup</span>
                 </div>
-                <p className="text-white/70 text-sm ml-5">{lastBackup.date}</p>
+                <p className="text-foreground/70 text-sm ml-5">{lastBackup.date}</p>
                 <div className="flex items-center gap-4 ml-5 mt-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[11px] text-white/40">Size:</span>
-                    <span className="text-xs text-white/70 font-medium">{lastBackup.size}</span>
+                    <span className="text-[11px] text-foreground/40">Size:</span>
+                    <span className="text-xs text-foreground/70 font-medium">{lastBackup.size}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[11px] text-white/40">Type:</span>
+                    <span className="text-[11px] text-foreground/40">Type:</span>
                     <span className="text-xs text-accent font-medium capitalize">{lastBackup.type}</span>
                   </div>
                 </div>
               </div>
             ) : (
-              <p className="text-white/40 text-sm">No backups yet</p>
+              <p className="text-foreground/40 text-sm">No backups yet</p>
             )}
-            <div className="mt-6 pt-5 border-t border-white/10">
+            <div className="mt-6 pt-5 border-t border-gray-100">
               <button
                 onClick={handleManualBackup}
                 disabled={backingUp}
@@ -89,25 +89,25 @@ export default function BackupPage() {
           </div>
 
           {/* Auto Backup Toggle */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6 sm:p-8">
-            <h2 className="text-sm font-bold tracking-wider text-white/60 uppercase mb-5">Schedule</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 className="text-sm font-bold tracking-wider text-foreground/60 uppercase mb-5">Schedule</h2>
             <div className="flex items-center justify-between py-3">
               <div>
-                <p className="text-sm font-medium text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Automatic Daily Backups</p>
-                <p className="text-[12px] text-white/40 mt-0.5">Daily backup at 3:00 AM server time</p>
+                <p className="text-sm font-medium text-foreground">Automatic Daily Backups</p>
+                <p className="text-[12px] text-foreground/40 mt-0.5">Daily backup at 3:00 AM server time</p>
               </div>
-              <button onClick={() => setAutoBackup(!autoBackup)} className={`relative w-11 h-6 rounded-full transition-all duration-300 shrink-0 ${autoBackup ? "bg-accent shadow-md shadow-accent/30" : "bg-white/20"}`}>
+              <button onClick={() => setAutoBackup(!autoBackup)} className={`relative w-11 h-6 rounded-full transition-all duration-300 shrink-0 ${autoBackup ? "bg-accent shadow-md shadow-accent/30" : "bg-gray-200"}`}>
                 <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-lg transition-all duration-300 ${autoBackup ? "translate-x-5" : "translate-x-0"}`} />
               </button>
             </div>
-            <div className="mt-4 pt-4 border-t border-white/10">
+            <div className="mt-4 pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-white/50">Total backups stored</span>
-                <span className="text-white font-medium">{backups.length}</span>
+                <span className="text-foreground/50">Total backups stored</span>
+                <span className="text-foreground font-medium">{backups.length}</span>
               </div>
               <div className="flex items-center justify-between text-sm mt-2">
-                <span className="text-white/50">Total size</span>
-                <span className="text-white font-medium">
+                <span className="text-foreground/50">Total size</span>
+                <span className="text-foreground font-medium">
                   {backups.reduce((acc, b) => acc + parseFloat(b.size), 0).toFixed(1)} MB
                 </span>
               </div>
@@ -116,23 +116,23 @@ export default function BackupPage() {
         </div>
 
         {/* Backup List */}
-        <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-          <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
-            <span className="text-xs font-bold tracking-widest text-white/60 uppercase">Backup History</span>
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden">
+          <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/50">
+            <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">Backup History</span>
           </div>
-          <div className="divide-y divide-white/5">
+          <div className="divide-y divide-gray-100">
             {backups.map((backup) => (
-              <div key={backup.id} className="flex items-center px-4 sm:px-6 py-3 sm:py-3.5 hover:bg-white/10 transition-all duration-300">
+              <div key={backup.id} className="flex items-center px-4 sm:px-6 py-3 sm:py-3.5 hover:bg-gray-50 transition-all duration-300">
                 <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs shrink-0 ${backup.type === "automatic" ? "bg-accent/20 text-accent" : "bg-blue-500/20 text-blue-400"}`}>
                   {backup.type === "automatic" ? "\u23F0" : "\uD83D\uDC64"}
                 </div>
                 <div className="ml-3 flex-1 min-w-0">
-                  <p className="text-sm text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{backup.date}</p>
-                  <p className="text-[11px] text-white/40 capitalize">{backup.type} backup &bull; {backup.size}</p>
+                  <p className="text-sm text-foreground">{backup.date}</p>
+                  <p className="text-[11px] text-foreground/40 capitalize">{backup.type} backup &bull; {backup.size}</p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0 ml-3">
-                  <button className="px-3 py-1.5 rounded-lg backdrop-blur-md bg-white/10 border border-white/10 text-white/70 hover:text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 text-[11px]">&#x1F4E5; DOWNLOAD</button>
-                  <button className="px-3 py-1.5 rounded-lg backdrop-blur-md bg-white/5 border border-white/5 text-white/50 hover:text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-300 text-[11px]">&#x1F504; RESTORE</button>
+                  <button className="px-3 py-1.5 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/70 hover:text-foreground hover:bg-accent-light hover:border-gray-200 transition-all duration-300 text-[11px]">&#x1F4E5; DOWNLOAD</button>
+                  <button className="px-3 py-1.5 rounded-lg bg-transparent border border-transparent text-foreground/50 hover:text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-300 text-[11px]">&#x1F504; RESTORE</button>
                 </div>
               </div>
             ))}

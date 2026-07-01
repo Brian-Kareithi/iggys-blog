@@ -39,22 +39,22 @@ const recentActivity = [
 export default function AdminDashboard() {
   return (
     <div className="flex-1 flex flex-col">
-      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 backdrop-blur-2xl bg-white/10 border-b border-white/20 shadow-lg">
+      <header className="flex items-center justify-between px-6 sm:px-10 py-3 sm:py-4 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-accent font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">Dashboard</span>
+          <span className="text-accent font-medium">Dashboard</span>
         </div>
-        <div className="flex items-center gap-3 text-xs text-white/50">
+        <div className="flex items-center gap-3 text-xs text-foreground/50">
           <span className="hidden sm:block">Last 30 days</span>
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
           <span className="text-accent font-medium">Live</span>
-          <div className="w-9 h-9 rounded-full bg-accent/90 backdrop-blur-md flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-lg border border-white/20 hover:bg-accent transition-all duration-300 ml-2">
+          <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold cursor-pointer shadow-md hover:bg-accent/90 transition-all duration-300 ml-2">
             IB
           </div>
         </div>
       </header>
 
       <main className="flex-1 px-6 sm:px-10 py-6 sm:py-8 overflow-y-auto">
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] mb-7">
+        <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight mb-7">
           Insights
         </h1>
 
@@ -63,12 +63,12 @@ export default function AdminDashboard() {
           {metrics.map((m) => (
             <div
               key={m.label}
-              className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl px-5 sm:px-6 py-5 sm:py-6 shadow-xl hover:bg-white/15 hover:border-white/30 hover:-translate-y-0.5 transition-all duration-300"
+              className="bg-white border border-gray-200 rounded-2xl px-5 sm:px-6 py-5 sm:py-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-1">
-                <p className="text-[11px] font-bold tracking-wider text-white/50 uppercase">{m.label}</p>
+                <p className="text-[11px] font-bold tracking-wider text-foreground/50 uppercase">{m.label}</p>
               </div>
-              <p className="text-2xl sm:text-3xl font-bold text-white mt-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+              <p className="text-2xl sm:text-3xl font-bold text-foreground mt-1">
                 {m.value}
               </p>
               <p className="text-[11px] text-accent mt-1.5 font-medium">{m.change}</p>
@@ -79,26 +79,26 @@ export default function AdminDashboard() {
         {/* Two columns: Recent Subscribers + Most Read */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8 sm:mb-10">
           {/* New Subscribers */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/30">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-bold tracking-widest text-white/60 uppercase">New Subscribers</span>
-                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/30 text-accent text-[10px] font-bold">+42</span>
+                <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">New Subscribers</span>
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/20 text-accent text-[10px] font-bold">+42</span>
               </div>
-              <span className="text-[10px] text-white/30">This month</span>
+              <span className="text-[10px] text-foreground/30">This month</span>
             </div>
-            <div className="divide-y divide-white/5">
+            <div className="divide-y divide-gray-100">
               {recentSubscribers.map((sub) => (
-                <div key={sub.email} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-white/10 transition-all duration-300">
-                  <div className="w-7 h-7 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent text-[10px] font-bold shrink-0">
+                <div key={sub.email} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-accent-light/30 transition-all duration-300">
+                  <div className="w-7 h-7 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent text-[10px] font-bold shrink-0">
                     {sub.name.split(" ").map((n) => n[0]).join("")}
                   </div>
                   <div className="ml-3 flex-1 min-w-0">
-                    <p className="text-sm font-medium text-white truncate drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{sub.name}</p>
-                    <p className="text-[11px] text-white/40 truncate">{sub.email}</p>
+                    <p className="text-sm font-medium text-foreground truncate">{sub.name}</p>
+                    <p className="text-[11px] text-foreground/40 truncate">{sub.email}</p>
                   </div>
                   <div className="text-right shrink-0 ml-3">
-                    <p className="text-[11px] text-white/50">{sub.date}</p>
+                    <p className="text-[11px] text-foreground/50">{sub.date}</p>
                     <p className="text-[10px] text-accent/70">{sub.source}</p>
                   </div>
                 </div>
@@ -107,24 +107,24 @@ export default function AdminDashboard() {
           </div>
 
           {/* Most Read */}
-          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
-              <span className="text-xs font-bold tracking-widest text-white/60 uppercase">Most Read</span>
-              <span className="text-[10px] text-white/30">All time</span>
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/30">
+              <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">Most Read</span>
+              <span className="text-[10px] text-foreground/30">All time</span>
             </div>
-            <div className="divide-y divide-white/5">
+            <div className="divide-y divide-gray-100">
               {mostRead.map((post, i) => (
-                <div key={post.title} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-white/5 border border-white/10 text-white/40 text-xs font-bold shrink-0">
+                <div key={post.title} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-accent-light/30 transition-all duration-300">
+                  <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-accent-light/50 border border-gray-100 text-foreground/40 text-xs font-bold shrink-0">
                     {i + 1}
                   </div>
                   <div className="ml-3 flex-1 min-w-0">
-                    <p className="text-sm font-medium text-white truncate drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{post.title}</p>
-                    <p className="text-[11px] text-white/40">{post.category}</p>
+                    <p className="text-sm font-medium text-foreground truncate">{post.title}</p>
+                    <p className="text-[11px] text-foreground/40">{post.category}</p>
                   </div>
                   <div className="text-right shrink-0 ml-3">
-                    <p className="text-sm font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{post.views.toLocaleString()}</p>
-                    <p className="text-[10px] text-white/40">views</p>
+                    <p className="text-sm font-bold text-foreground">{post.views.toLocaleString()}</p>
+                    <p className="text-[10px] text-foreground/40">views</p>
                   </div>
                   <div className="ml-2 sm:ml-3">
                     {post.trend === "up" ? (
@@ -140,19 +140,19 @@ export default function AdminDashboard() {
         </div>
 
         {/* Recent Activity */}
-        <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-          <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 backdrop-blur-md bg-white/5">
-            <span className="text-xs font-bold tracking-widest text-white/60 uppercase">Recent Activity</span>
-            <span className="text-[10px] text-white/30">Live feed</span>
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+          <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-accent-light/30">
+            <span className="text-xs font-bold tracking-widest text-foreground/60 uppercase">Recent Activity</span>
+            <span className="text-[10px] text-foreground/30">Live feed</span>
           </div>
-          <div className="divide-y divide-white/5">
+          <div className="divide-y divide-gray-100">
             {recentActivity.map((act, i) => (
-              <div key={i} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-white/10 transition-all duration-300">
+              <div key={i} className="flex items-center px-5 sm:px-6 py-3 sm:py-3.5 hover:bg-accent-light/30 transition-all duration-300">
                 <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0 ${
-                  act.action.includes("comment") ? "bg-blue-500/20 text-blue-400" :
-                  act.action.includes("Subscriber") ? "bg-accent/20 text-accent" :
-                  act.action.includes("published") ? "bg-green-500/20 text-green-400" :
-                  "bg-white/10 text-white/60"
+                  act.action.includes("comment") ? "bg-blue-100 text-blue-600" :
+                  act.action.includes("Subscriber") ? "bg-accent/10 text-accent" :
+                  act.action.includes("published") ? "bg-green-100 text-green-600" :
+                  "bg-accent-light/50 text-foreground/60"
                 }`}>
                   {act.action.includes("comment") ? "\uD83D\uDCAC" :
                    act.action.includes("Subscriber") ? "\u2709\uFE0F" :
@@ -160,17 +160,17 @@ export default function AdminDashboard() {
                    act.action.includes("updated") ? "\u270F\uFE0F" : "\uD83D\uDD04"}
                 </div>
                 <div className="ml-3 flex-1 min-w-0">
-                  <p className="text-sm text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                  <p className="text-sm text-foreground">
                     <span className="font-medium">{act.action}</span> {act.detail}
                   </p>
                 </div>
-                <span className="text-[11px] text-white/40 shrink-0 ml-3">{act.time}</span>
+                <span className="text-[11px] text-foreground/40 shrink-0 ml-3">{act.time}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-[11px] text-white/30 text-center mt-6">Data updates in real-time &bull; Last refreshed just now</p>
+        <p className="text-[11px] text-foreground/30 text-center mt-6">Data updates in real-time &bull; Last refreshed just now</p>
       </main>
     </div>
   );
